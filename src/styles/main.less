@@ -4,18 +4,23 @@
     box-sizing: border-box;
 }
 
+.mixin-container() { // mixin
+    left: 50%;
+    z-index: 2;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
 body {
     background-color: black;
 
     .text-overlay {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
         color: white;
         font-size: 42px;
         font-family: "Jaini", system-ui;
-        z-index: 2;
+        text-align: center;
         text-shadow: 8px 7px 9px #000; // sombra no tetxo
+        .mixin-container();
     }
     
     .bkg-repeat {
@@ -79,14 +84,11 @@ body {
     }
 
     .main-characters {
-        position: absolute;
+        top: 120%;
+        gap: 150px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 150px;
-        top: 120%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
+        .mixin-container();
 
         img {
             width: 200px;
@@ -98,23 +100,18 @@ body {
         }
     }
 
-
     .sinopse {
         .text-overlay {
             top: 165%;
             width: 80%;
-            text-align: center;
         }
     }
 
     .ticket {
-        position: absolute;
         font-size: 40px;
         top: 200%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         color: #17ab17;
-        z-index: 2;
+        .mixin-container();
 
         span {
             font-family: "Jersey 15", sans-serif;
@@ -131,12 +128,9 @@ body {
     
     .trailer {
         video {
-            position: absolute;
-            z-index: 2;
             width: 60%;
             top: 250%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            .mixin-container();
         }
     }
 
@@ -144,20 +138,16 @@ body {
         .text-overlay {
             top: 290%;
             width: 60%;
-            text-align: center;
         }
     }
 
     .icons {
-        position: absolute;
         top: 312%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: 374px;
         object-fit: cover;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        .mixin-container();
         
         img {
             width: 12vh;

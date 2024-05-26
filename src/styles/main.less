@@ -154,14 +154,14 @@ body {
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 2;
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 374px;
         object-fit: cover;
-        line-height: 100px;
         
         img {
             width: 12vh;
             height: 13vh;
-            margin: 0 180px;
         }
 
         #first-animation {

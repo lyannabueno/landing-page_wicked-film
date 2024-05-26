@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    
+    .bkg-repeat {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow: hidden;
+        
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(90deg, rgba(255, 78, 211, 0.2), rgba(0, 244, 126, 0.2));
+            mix-blend-mode: screen; // mistura o gradiente com o conteúdo
+            z-index: 1;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            animation: carousel 20s linear infinite;
+
+            img {
+                width: 100%;
+                height: 60vh;
+                object-fit: cover;
+                filter: brightness(0.1);
+                position: relative;
+                animation: carousel 20s linear infinite; /* Aplicando a animação de carrossel às imagens */
+                margin: 20px;
+            }
+        }
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    
+        img {
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            animation: carousel 20s linear infinite;
+        }
+        
+        .text-overlay {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 42px;
+            font-family: "Jaini", system-ui;
+            z-index: 2;
+            text-shadow: 8px 7px 9px #000; // sombra no tetxo
+        }
+        
+    }
+    
+}
+
+@keyframes carousel {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

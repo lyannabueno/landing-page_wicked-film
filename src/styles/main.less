@@ -6,6 +6,17 @@
 
 body {
     background-color: black;
+
+    .text-overlay {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 42px;
+        font-family: "Jaini", system-ui;
+        z-index: 2;
+        text-shadow: 8px 7px 9px #000; // sombra no tetxo
+    }
     
     .bkg-repeat {
         position: relative;
@@ -48,39 +59,176 @@ body {
     
         img {
             width: 50%;
+            object-fit: cover;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 30%;
+            left: 25%;
+            z-index: 2;
+            cursor: pointer;
+            animation: float 2s infinite alternate ease-in-out;
+
+            &:hover {
+                animation: shake 5s ease;
+            }
         }
 
-        .carousel-wrapper {
-            position: relative;
-            display: flex;
-            animation: carousel 20s linear infinite;
-        }
-        
         .text-overlay {
-            position: absolute;
-            top: 75%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 42px;
-            font-family: "Jaini", system-ui;
-            z-index: 2;
-            text-shadow: 8px 7px 9px #000; // sombra no tetxo
+            top: 80%;
         }
         
     }
+
+    .main-characters {
+        position: absolute;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 150px;
+        top: 120%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 1px 1px 20px 13px #0000007d;
+            cursor: pointer;
+            animation: shake 10s infinite;
+        }
+    }
+
+
+    .sinopse {
+        .text-overlay {
+            top: 165%;
+            width: 80%;
+            text-align: center;
+        }
+    }
+
+    .ticket {
+        position: absolute;
+        font-size: 40px;
+        top: 200%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #17ab17;
+        z-index: 2;
+
+        span {
+            font-family: "Jersey 15", sans-serif;
+            border: 5px solid #5cdf5c;
+            padding: 15px;
+            box-shadow: 1px 1px 20px 4px #5cdf5c;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: inset 1px 1px 20px 4px #5cdf5c;
+            }
+        }
+    }
     
+    .trailer {
+        video {
+            position: absolute;
+            z-index: 2;
+            width: 60%;
+            top: 250%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .catch-phrase {
+        .text-overlay {
+            top: 290%;
+            width: 60%;
+            text-align: center;
+        }
+    }
+
+    .icons {
+        position: absolute;
+        top: 312%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        display: flex;
+        object-fit: cover;
+        line-height: 100px;
+        
+        img {
+            width: 12vh;
+            height: 13vh;
+            margin: 0 180px;
+        }
+
+        #first-animation {
+            animation: rightrotate 5s infinite linear;
+        }
+        
+        #separate-animation {
+            animation: pulse 2s infinite alternate;
+        }
+
+        #second-animation {
+            animation: leftrotate 5s infinite linear;
+        }
+
+    }
 }
 
 @keyframes carousel {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(0.9); }
+    50% { transform: scale(1); }
+    70% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes shake {
+    0% { transform: translate(10px, 0px) rotate(0deg); }
+    25% { transform: translate(-10px, -20px) rotate(-5deg); }
+    50% { transform: translate(-20px, 0px) rotate(5deg); }
+    75% { transform: translate(10px, 20px) rotate(0deg); }
+    100% { transform: translate(10px, 0px) rotate(-5deg); }
+}
+
+@keyframes rightrotate {
     0% {
-        transform: translateX(0%);
+        transform: rotate(0deg);
     }
     100% {
-        transform: translateX(-100%);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes leftrotate {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
     }
 }

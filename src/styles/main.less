@@ -1,3 +1,8 @@
+@import 'variables';
+@breakpointMobile: ~"(max-width: 767px)";
+@breakpointTablet: ~"(min-width: 768px) and (max-width: 1023px)";
+@breakpointPC: ~"(min-width: 1024px) and (max-width: 1279px)";
+
 * {
     margin: 0;
     padding: 0; 
@@ -12,14 +17,14 @@
 }
 
 body {
-    background-color: black;
+    background-color: @background;
 
     .text-overlay {
-        color: white;
+        color: @colorText;
         font-size: 42px;
         font-family: "Jaini", system-ui;
         text-align: center;
-        text-shadow: 8px 7px 9px #000; // sombra no tetxo
+        text-shadow: 8px 7px 9px @background; // sombra no tetxo
         .mixin-container();
     }
     
@@ -36,7 +41,7 @@ body {
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(90deg, rgba(255, 78, 211, 0.2), rgba(0, 244, 126, 0.2));
+            background-image: linear-gradient(90deg, @pinkGradient, @greenGradient);
             mix-blend-mode: screen; // mistura o gradiente com o conteúdo
             z-index: 1;
         }
@@ -78,23 +83,32 @@ body {
         }
 
         .text-overlay {
-            top: 80%;
+            top: 87%;
+
+            @media screen and (@breakpointPC) {
+                width: 60%;
+                top: 90%;
+            }
         }
         
     }
 
     .main-characters {
-        top: 120%;
+        top: 130%;
         gap: 150px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         .mixin-container();
 
+        @media screen and (@breakpointPC) {
+            top: 135%;
+        }
+
         img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            box-shadow: 1px 1px 20px 13px #0000007d;
+            box-shadow: 1px 1px 20px 13px @weakBackground;
             cursor: pointer;
             animation: shake 10s infinite;
         }
@@ -102,52 +116,73 @@ body {
 
     .sinopse {
         .text-overlay {
-            top: 165%;
+            top: 180%;
             width: 80%;
+
+            @media screen and (@breakpointPC) {
+                top: 200%;
+            }
         }
     }
 
     .ticket {
         font-size: 40px;
-        top: 200%;
-        color: #17ab17;
+        top: 225%;
+        color: @ticketColor;
         .mixin-container();
+
+        @media screen and (@breakpointPC) {
+            top: 253%;
+        }
 
         span {
             font-family: "Jersey 15", sans-serif;
-            border: 5px solid #5cdf5c;
+            border: 5px solid @borderColor;
             padding: 15px;
-            box-shadow: 1px 1px 20px 4px #5cdf5c;
+            box-shadow: 1px 1px 20px 4px @borderColor;
             cursor: pointer;
 
             &:hover {
-                box-shadow: inset 1px 1px 20px 4px #5cdf5c;
+                box-shadow: inset 1px 1px 20px 4px @borderColor;
             }
         }
     }
     
     .trailer {
         video {
-            width: 60%;
-            top: 250%;
+            width: 70%;
+            top: 285%;
             .mixin-container();
+
+            @media screen and (@breakpointPC) {
+                top: 310%;
+            }
         }
     }
 
     .catch-phrase {
         .text-overlay {
-            top: 290%;
+            top: 330%;
             width: 60%;
+
+            @media screen and (@breakpointPC) {
+                top: 355%;
+                width: 70%;
+            }
         }
     }
 
     .icons {
-        top: 312%;
+        top: 360%;
         gap: 374px;
         object-fit: cover;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         .mixin-container();
+
+        @media screen and (@breakpointPC) {
+            top: 385%;
+        }
         
         img {
             width: 12vh;
